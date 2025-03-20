@@ -16,7 +16,7 @@ return {id, data}
 
 const Cocktail = () => {
 const {id, data} = useLoaderData();
-const singleDring = data.links[0];
+const singleDring = data.drinks[0];
 console.log(singleDring);
   
   return (
