@@ -1,6 +1,8 @@
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Landing, About, HomeLayout, Cocktail, NewsLetter, Error , NavLink } from './pages'
+import { Landing, About, HomeLayout, Cocktail, NewsLetter, Error, SinglePageError } from './pages'
+import {loader as landingLoader } from './pages/Landing';
+import {loader as singleCocktailLoader } from './pages/Cocktail';
 
 
 // 2. Creating a Router
@@ -8,13 +10,18 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <HomeLayout />,  // Home Page
+    errorElement: <Error/>,
     children: [
       {
         index : true,
         element: <Landing />, // Landing Page
-      }, 
+        errorElement: <SinglePageError/>,
+        loader : landingLoader,
+      },
       {
-        path: 'cocktail',
+        path: 'cocktail/:id',
+        errorElement: <SinglePageError/>,
+        loader: singleCocktailLoader,
         element : <Cocktail/>, // Cocktail
       },
       {
@@ -25,7 +32,8 @@ const router = createBrowserRouter([
       {
         path: 'about',
         element: <About/>, 
-      }
+      },
+
     ]
   }, 
 ])
@@ -34,8 +42,8 @@ const router = createBrowserRouter([
 // 3. Rendering the Router in React
 
 const App = () => {
-  <NavLink to="/about">Go to About</NavLink>
   return <RouterProvider router={router} />; // It connects router configuration (created using createBrowserRouter)
 
 };
+
 export default App;

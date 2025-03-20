@@ -280,10 +280,11 @@ PROJECT CSS
 =============
 */
 .page {
-  width: var(--view-width);
+  width: (--view-width);
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 5rem 2rem;
+
 }
 
 
