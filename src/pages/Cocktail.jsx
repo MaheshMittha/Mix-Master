@@ -8,7 +8,7 @@ const singleCocktailUrl =
 
 export const loader = async ({ params }) => {
   const { id } = params;
-  const { data } = await axios.get(`${singleCocktailUrl} ${id}`)
+  const { data } = await axios.get(`${singleCocktailUrl}${id}`);
   //console.log(data);
   return { id, data }
 }
@@ -18,11 +18,10 @@ const Cocktail = () => {
   const { id, data } = useLoaderData();
   // if (!data) return <h2>something went wrong...</h2>
   if (!data) return <Navigate to ='/' />
-
   const singleDring = data.drinks[0];
   
   const { strDrink: name,
-    strDrinmkThumb: image,
+    strDrinkThumb: image,
     strAlcoholic: info,
     strCategory: category,
     strGlass: glass,
@@ -32,6 +31,7 @@ const Cocktail = () => {
   // Convertig Object into an array
   const validIngredients = Object.keys(singleDring).filter((key) => key.startsWith('strIngredient') && singleDring[key] !== null).map((key) => singleDring[key])
   console.log(validIngredients);
+
 
   return (
     <Wrapper>
@@ -73,10 +73,10 @@ const Cocktail = () => {
           </p>
         </div>
       </div>
+
     </Wrapper>
   )
 }
-
 
 
 export default Cocktail;

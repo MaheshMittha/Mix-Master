@@ -45,8 +45,8 @@ const router = createBrowserRouter([
 // 3. Rendering the Router in React
 
 const App = () => {
-  return <RouterProvider router={router} />; // It connects router configuration (created using createBrowserRouter)
-
+  return 
+  <RouterProvider router={router} />; // It connects router configuration (created using createBrowserRouter)  
 };
 
 export default App;
