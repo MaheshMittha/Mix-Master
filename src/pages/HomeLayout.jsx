@@ -3,11 +3,9 @@ import { Outlet, useNavigation } from 'react-router-dom'
 import Navbar from '../Components/Navbar'
 
 const HomeLayout = () => {
-
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   const isPageLoading = navigation.state === 'loading';
   const value = 'some value';
-
 
   return (
     <>
